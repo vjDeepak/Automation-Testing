@@ -1,0 +1,299 @@
+{
+  "platform": "WEB",
+  "target": "https://www.saucedemo.com/",
+  "run_at": "20260920_151433",
+  "total": 13,
+  "passed": 4,
+  "failed": 9,
+  "pass_rate": "30.8%",
+  "categories": {
+    "form_validation": {
+      "pass": 1,
+      "fail": 5
+    },
+    "ui_check": {
+      "pass": 1,
+      "fail": 1
+    },
+    "login_flow": {
+      "pass": 0,
+      "fail": 2
+    },
+    "navigation": {
+      "pass": 2,
+      "fail": 0
+    },
+    "checkout_flow": {
+      "pass": 0,
+      "fail": 1
+    }
+  },
+  "test_results": [
+    {
+      "id": "TC001",
+      "name": "Submit completely empty form",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "PASS",
+      "attempts": 1,
+      "error": null,
+      "expected": "Validation error shown for required fields",
+      "timestamp": "2026-09-20T15:13:40.821119"
+    },
+    {
+      "id": "TC002",
+      "name": "Username only \u2014 password empty",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Password required error shown",
+      "timestamp": "2026-09-20T15:13:46.080806"
+    },
+    {
+      "id": "TC003",
+      "name": "Password only \u2014 username empty",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'password'",
+      "expected": "Username required error shown",
+      "timestamp": "2026-09-20T15:13:51.361463"
+    },
+    {
+      "id": "TC004",
+      "name": "Invalid credentials \u2014 wrong password",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Login error message shown",
+      "timestamp": "2026-09-20T15:13:56.633275"
+    },
+    {
+      "id": "TC005",
+      "name": "Invalid credentials \u2014 wrong username",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "medium",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Login error message shown",
+      "timestamp": "2026-09-20T15:14:03.347096"
+    },
+    {
+      "id": "TC006",
+      "name": "SQL injection in username field",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "medium",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Input sanitised \u2014 no login",
+      "timestamp": "2026-09-20T15:14:08.585497"
+    },
+    {
+      "id": "TC007",
+      "name": "Login button is visible and enabled",
+      "category": "ui_check",
+      "type": "positive",
+      "priority": "high",
+      "status": "PASS",
+      "attempts": 1,
+      "error": null,
+      "expected": "Button is visible and clickable",
+      "timestamp": "2026-09-20T15:14:09.766964"
+    },
+    {
+      "id": "TC008",
+      "name": "Input fields are visible and editable",
+      "category": "ui_check",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Clickable not found: 'username'",
+      "expected": "Both fields visible and interactive",
+      "timestamp": "2026-09-20T15:14:15.235294"
+    },
+    {
+      "id": "TC009",
+      "name": "Valid login \u2014 standard user",
+      "category": "login_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Redirected to inventory/dashboard page",
+      "timestamp": "2026-09-20T15:14:20.491556"
+    },
+    {
+      "id": "TC010",
+      "name": "Full login -> browse -> logout flow",
+      "category": "login_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Full login/logout cycle completes",
+      "timestamp": "2026-09-20T15:14:25.772959"
+    },
+    {
+      "id": "TC011",
+      "name": "Page title is correct on load",
+      "category": "navigation",
+      "type": "positive",
+      "priority": "medium",
+      "status": "PASS",
+      "attempts": 1,
+      "error": null,
+      "expected": "Page title matches 'Swag Labs'",
+      "timestamp": "2026-09-20T15:14:26.883216"
+    },
+    {
+      "id": "TC012",
+      "name": "URL is correct on load",
+      "category": "navigation",
+      "type": "positive",
+      "priority": "medium",
+      "status": "PASS",
+      "attempts": 1,
+      "error": null,
+      "expected": "URL contains saucedemo.com",
+      "timestamp": "2026-09-20T15:14:28.021770"
+    },
+    {
+      "id": "TC013",
+      "name": "Full end-to-end journey across all discovered pages",
+      "category": "checkout_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "User can walk the full flow: https://www.saucedemo.com/inventory.html -> https://www.saucedemo.com/inventory.html#",
+      "timestamp": "2026-09-20T15:14:33.359045"
+    }
+  ],
+  "bugs": [
+    {
+      "id": "TC002",
+      "name": "Username only \u2014 password empty",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Password required error shown",
+      "timestamp": "2026-09-20T15:13:46.080806"
+    },
+    {
+      "id": "TC003",
+      "name": "Password only \u2014 username empty",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'password'",
+      "expected": "Username required error shown",
+      "timestamp": "2026-09-20T15:13:51.361463"
+    },
+    {
+      "id": "TC004",
+      "name": "Invalid credentials \u2014 wrong password",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Login error message shown",
+      "timestamp": "2026-09-20T15:13:56.633275"
+    },
+    {
+      "id": "TC005",
+      "name": "Invalid credentials \u2014 wrong username",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "medium",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Login error message shown",
+      "timestamp": "2026-09-20T15:14:03.347096"
+    },
+    {
+      "id": "TC006",
+      "name": "SQL injection in username field",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "medium",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Input sanitised \u2014 no login",
+      "timestamp": "2026-09-20T15:14:08.585497"
+    },
+    {
+      "id": "TC008",
+      "name": "Input fields are visible and editable",
+      "category": "ui_check",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Clickable not found: 'username'",
+      "expected": "Both fields visible and interactive",
+      "timestamp": "2026-09-20T15:14:15.235294"
+    },
+    {
+      "id": "TC009",
+      "name": "Valid login \u2014 standard user",
+      "category": "login_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Redirected to inventory/dashboard page",
+      "timestamp": "2026-09-20T15:14:20.491556"
+    },
+    {
+      "id": "TC010",
+      "name": "Full login -> browse -> logout flow",
+      "category": "login_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Full login/logout cycle completes",
+      "timestamp": "2026-09-20T15:14:25.772959"
+    },
+    {
+      "id": "TC013",
+      "name": "Full end-to-end journey across all discovered pages",
+      "category": "checkout_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "User can walk the full flow: https://www.saucedemo.com/inventory.html -> https://www.saucedemo.com/inventory.html#",
+      "timestamp": "2026-09-20T15:14:33.359045"
+    }
+  ]
+}

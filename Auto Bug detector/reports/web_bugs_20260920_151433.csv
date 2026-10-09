@@ -1,0 +1,14 @@
+id,name,category,type,priority,status,attempts,expected,error,timestamp
+TC001,Submit completely empty form,form_validation,negative,high,PASS,1,Validation error shown for required fields,,2026-09-20T15:13:40.821119
+TC002,Username only — password empty,form_validation,negative,high,FAIL,3,Password required error shown,Input not found: 'username',2026-09-20T15:13:46.080806
+TC003,Password only — username empty,form_validation,negative,high,FAIL,3,Username required error shown,Input not found: 'password',2026-09-20T15:13:51.361463
+TC004,Invalid credentials — wrong password,form_validation,negative,high,FAIL,3,Login error message shown,Input not found: 'username',2026-09-20T15:13:56.633275
+TC005,Invalid credentials — wrong username,form_validation,negative,medium,FAIL,3,Login error message shown,Input not found: 'username',2026-09-20T15:14:03.347096
+TC006,SQL injection in username field,form_validation,negative,medium,FAIL,3,Input sanitised — no login,Input not found: 'username',2026-09-20T15:14:08.585497
+TC007,Login button is visible and enabled,ui_check,positive,high,PASS,1,Button is visible and clickable,,2026-09-20T15:14:09.766964
+TC008,Input fields are visible and editable,ui_check,positive,high,FAIL,3,Both fields visible and interactive,Clickable not found: 'username',2026-09-20T15:14:15.235294
+TC009,Valid login — standard user,login_flow,positive,high,FAIL,3,Redirected to inventory/dashboard page,Input not found: 'username',2026-09-20T15:14:20.491556
+TC010,Full login -> browse -> logout flow,login_flow,positive,high,FAIL,3,Full login/logout cycle completes,Input not found: 'username',2026-09-20T15:14:25.772959
+TC011,Page title is correct on load,navigation,positive,medium,PASS,1,Page title matches 'Swag Labs',,2026-09-20T15:14:26.883216
+TC012,URL is correct on load,navigation,positive,medium,PASS,1,URL contains saucedemo.com,,2026-09-20T15:14:28.021770
+TC013,Full end-to-end journey across all discovered pages,checkout_flow,positive,high,FAIL,3,User can walk the full flow: https://www.saucedemo.com/inventory.html -> https://www.saucedemo.com/inventory.html#,Input not found: 'username',2026-09-20T15:14:33.359045
