@@ -1,0 +1,8 @@
+selenium
+webdriver-manager
+appium-python-client
+python-dotenv
+openpyxl
+pandas
+gspread
+oauth2client

@@ -1,0 +1,667 @@
+{
+  "platform": "WEB",
+  "target": "https://www.saucedemo.com/",
+  "run_at": "20260920_153354",
+  "total": 13,
+  "passed": 4,
+  "failed": 9,
+  "pass_rate": "30.8%",
+  "categories": {
+    "form_validation": {
+      "pass": 1,
+      "fail": 5
+    },
+    "ui_check": {
+      "pass": 1,
+      "fail": 1
+    },
+    "login_flow": {
+      "pass": 0,
+      "fail": 2
+    },
+    "navigation": {
+      "pass": 2,
+      "fail": 0
+    },
+    "checkout_flow": {
+      "pass": 0,
+      "fail": 1
+    }
+  },
+  "test_results": [
+    {
+      "id": "TC001",
+      "name": "Submit completely empty form",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "PASS",
+      "attempts": 1,
+      "error": null,
+      "expected": "Validation error shown for required fields",
+      "steps": [
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "",
+      "timestamp": "2026-09-20T15:33:02.047462"
+    },
+    {
+      "id": "TC002",
+      "name": "Username only \u2014 password empty",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Password required error shown",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC002.png",
+      "timestamp": "2026-09-20T15:33:07.473719"
+    },
+    {
+      "id": "TC003",
+      "name": "Password only \u2014 username empty",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'password'",
+      "expected": "Username required error shown",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC003.png",
+      "timestamp": "2026-09-20T15:33:12.902704"
+    },
+    {
+      "id": "TC004",
+      "name": "Invalid credentials \u2014 wrong password",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Login error message shown",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "wrongpassword"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC004.png",
+      "timestamp": "2026-09-20T15:33:18.299341"
+    },
+    {
+      "id": "TC005",
+      "name": "Invalid credentials \u2014 wrong username",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "medium",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Login error message shown",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "nonexistent_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC005.png",
+      "timestamp": "2026-09-20T15:33:23.667250"
+    },
+    {
+      "id": "TC006",
+      "name": "SQL injection in username field",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "medium",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Input sanitised \u2014 no login",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "' OR 1=1 --"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "any"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC006.png",
+      "timestamp": "2026-09-20T15:33:29.006518"
+    },
+    {
+      "id": "TC007",
+      "name": "Login button is visible and enabled",
+      "category": "ui_check",
+      "type": "positive",
+      "priority": "high",
+      "status": "PASS",
+      "attempts": 1,
+      "error": null,
+      "expected": "Button is visible and clickable",
+      "steps": [
+        {
+          "action": "verify",
+          "target": "element_visible",
+          "expect": "react-burger-menu-btn"
+        },
+        {
+          "action": "verify",
+          "target": "element_enabled",
+          "expect": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "",
+      "timestamp": "2026-09-20T15:33:30.180368"
+    },
+    {
+      "id": "TC008",
+      "name": "Input fields are visible and editable",
+      "category": "ui_check",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Clickable not found: 'username'",
+      "expected": "Both fields visible and interactive",
+      "steps": [
+        {
+          "action": "verify",
+          "target": "element_visible",
+          "expect": "username"
+        },
+        {
+          "action": "verify",
+          "target": "element_visible",
+          "expect": "password"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC008.png",
+      "timestamp": "2026-09-20T15:33:35.793943"
+    },
+    {
+      "id": "TC009",
+      "name": "Valid login \u2014 standard user",
+      "category": "login_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Redirected to inventory/dashboard page",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        },
+        {
+          "action": "verify",
+          "target": "url_contains",
+          "expect": "inventory"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC009.png",
+      "timestamp": "2026-09-20T15:33:41.203575"
+    },
+    {
+      "id": "TC010",
+      "name": "Full login -> browse -> logout flow",
+      "category": "login_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Full login/logout cycle completes",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        },
+        {
+          "action": "verify",
+          "target": "url_contains",
+          "expect": "inventory"
+        },
+        {
+          "action": "click",
+          "target": "Open Menu"
+        },
+        {
+          "action": "click",
+          "target": "Logout"
+        },
+        {
+          "action": "verify",
+          "target": "url_contains",
+          "expect": "saucedemo.com"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC010.png",
+      "timestamp": "2026-09-20T15:33:46.572397"
+    },
+    {
+      "id": "TC011",
+      "name": "Page title is correct on load",
+      "category": "navigation",
+      "type": "positive",
+      "priority": "medium",
+      "status": "PASS",
+      "attempts": 1,
+      "error": null,
+      "expected": "Page title matches 'Swag Labs'",
+      "steps": [
+        {
+          "action": "verify",
+          "target": "page_title",
+          "expect": "Swag Labs"
+        }
+      ],
+      "screenshot": "",
+      "timestamp": "2026-09-20T15:33:47.668657"
+    },
+    {
+      "id": "TC012",
+      "name": "URL is correct on load",
+      "category": "navigation",
+      "type": "positive",
+      "priority": "medium",
+      "status": "PASS",
+      "attempts": 1,
+      "error": null,
+      "expected": "URL contains saucedemo.com",
+      "steps": [
+        {
+          "action": "verify",
+          "target": "url_contains",
+          "expect": "saucedemo.com"
+        }
+      ],
+      "screenshot": "",
+      "timestamp": "2026-09-20T15:33:48.834019"
+    },
+    {
+      "id": "TC013",
+      "name": "Full end-to-end journey across all discovered pages",
+      "category": "checkout_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "User can walk the full flow: https://www.saucedemo.com/inventory.html -> https://www.saucedemo.com/inventory.html#",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        },
+        {
+          "action": "navigate",
+          "target": "https://www.saucedemo.com/inventory.html#"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC013.png",
+      "timestamp": "2026-09-20T15:33:54.173021"
+    }
+  ],
+  "bugs": [
+    {
+      "id": "TC002",
+      "name": "Username only \u2014 password empty",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Password required error shown",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC002.png",
+      "timestamp": "2026-09-20T15:33:07.473719"
+    },
+    {
+      "id": "TC003",
+      "name": "Password only \u2014 username empty",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'password'",
+      "expected": "Username required error shown",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC003.png",
+      "timestamp": "2026-09-20T15:33:12.902704"
+    },
+    {
+      "id": "TC004",
+      "name": "Invalid credentials \u2014 wrong password",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Login error message shown",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "wrongpassword"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC004.png",
+      "timestamp": "2026-09-20T15:33:18.299341"
+    },
+    {
+      "id": "TC005",
+      "name": "Invalid credentials \u2014 wrong username",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "medium",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Login error message shown",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "nonexistent_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC005.png",
+      "timestamp": "2026-09-20T15:33:23.667250"
+    },
+    {
+      "id": "TC006",
+      "name": "SQL injection in username field",
+      "category": "form_validation",
+      "type": "negative",
+      "priority": "medium",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Input sanitised \u2014 no login",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "' OR 1=1 --"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "any"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC006.png",
+      "timestamp": "2026-09-20T15:33:29.006518"
+    },
+    {
+      "id": "TC008",
+      "name": "Input fields are visible and editable",
+      "category": "ui_check",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Clickable not found: 'username'",
+      "expected": "Both fields visible and interactive",
+      "steps": [
+        {
+          "action": "verify",
+          "target": "element_visible",
+          "expect": "username"
+        },
+        {
+          "action": "verify",
+          "target": "element_visible",
+          "expect": "password"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC008.png",
+      "timestamp": "2026-09-20T15:33:35.793943"
+    },
+    {
+      "id": "TC009",
+      "name": "Valid login \u2014 standard user",
+      "category": "login_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Redirected to inventory/dashboard page",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        },
+        {
+          "action": "verify",
+          "target": "url_contains",
+          "expect": "inventory"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC009.png",
+      "timestamp": "2026-09-20T15:33:41.203575"
+    },
+    {
+      "id": "TC010",
+      "name": "Full login -> browse -> logout flow",
+      "category": "login_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "Full login/logout cycle completes",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        },
+        {
+          "action": "verify",
+          "target": "url_contains",
+          "expect": "inventory"
+        },
+        {
+          "action": "click",
+          "target": "Open Menu"
+        },
+        {
+          "action": "click",
+          "target": "Logout"
+        },
+        {
+          "action": "verify",
+          "target": "url_contains",
+          "expect": "saucedemo.com"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC010.png",
+      "timestamp": "2026-09-20T15:33:46.572397"
+    },
+    {
+      "id": "TC013",
+      "name": "Full end-to-end journey across all discovered pages",
+      "category": "checkout_flow",
+      "type": "positive",
+      "priority": "high",
+      "status": "FAIL",
+      "attempts": 3,
+      "error": "Input not found: 'username'",
+      "expected": "User can walk the full flow: https://www.saucedemo.com/inventory.html -> https://www.saucedemo.com/inventory.html#",
+      "steps": [
+        {
+          "action": "fill",
+          "target": "username",
+          "value": "standard_user"
+        },
+        {
+          "action": "fill",
+          "target": "password",
+          "value": "secret_sauce"
+        },
+        {
+          "action": "click",
+          "target": "react-burger-menu-btn"
+        },
+        {
+          "action": "navigate",
+          "target": "https://www.saucedemo.com/inventory.html#"
+        }
+      ],
+      "screenshot": "reports/screenshots\\TC013.png",
+      "timestamp": "2026-09-20T15:33:54.173021"
+    }
+  ]
+}
